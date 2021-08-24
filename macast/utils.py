@@ -16,6 +16,7 @@ if sys.platform == 'darwin':
     from AppKit import NSBundle
 
 logger = logging.getLogger("Utils")
+logger.setLevel(logging.DEBUG)
 PORT = 1068
 
 SETTING_DIR = appdirs.user_config_dir('Macast', 'xfangfang')

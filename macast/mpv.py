@@ -24,7 +24,7 @@ if os.name == 'nt':
     from multiprocessing.connection import PipeConnection
 
 logger = logging.getLogger("Render")
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 SERVICE_STATE_OBSERVED = {
     "AVTransport": ['TransportState',
                     'TransportStatus',
@@ -736,7 +736,7 @@ class MPVRender(Render):
                 '--input-ipc-server={}'.format(self.mpv_sock),
                 '--image-display-duration=inf',
                 '--idle=yes',
-                '--no-terminal',
+                # '--no-terminal',
                 '--ontop',
                 '--on-all-workspaces',
                 '--hwdec=yes',
@@ -777,8 +777,8 @@ class MPVRender(Render):
             cherrypy.engine.publish('mpv_start')
             self.proc = subprocess.run(
                 params,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
+                # stdout=subprocess.DEVNULL,
+                # stderr=subprocess.DEVNULL,
                 stdin=subprocess.PIPE,
                 env=Setting.getSystemEnv())
 

@@ -13,6 +13,7 @@ from .mpv import MPVRender, Render
 from .utils import PORT, Setting
 
 logger = logging.getLogger("PLUGIN")
+logger.setLevel(logging.DEBUG)
 
 
 class RenderPlugin(plugins.SimplePlugin):
@@ -121,7 +122,7 @@ class SSDPPlugin(plugins.SimplePlugin):
             self.ssdp.register('local', device,
                                device[43:] if device[43:] != '' else device,
                                'http://{}:{}/description.xml'.format(ip, PORT),
-                                Setting.getServerInfo(),
+                               Setting.getServerInfo(),
                                'max-age=66')
 
     def unregister(self):

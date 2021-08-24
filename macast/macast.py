@@ -14,8 +14,9 @@ from cherrypy.process.plugins import Monitor
 from .utils import loadXML, XMLPath, PORT, Setting
 from .plugin import SSDPPlugin, MPVPlugin
 
-logging.getLogger("cherrypy").propagate = False
+# logging.getLogger("cherrypy").propagate = False
 logger = logging.getLogger("main")
+logger.setLevel(logging.DEBUG)
 
 
 @cherrypy.expose
@@ -34,7 +35,7 @@ class DLNAHandler:
             model_name="Macast",
             model_url="https://xfangfang.github.io/Macast",
             model_number=Setting.getVersion(),
-            uuid=Setting.getUSN()).encode()
+            uuid=Setting.getUSN()).replace('\n', '').encode()
 
     def GET(self, param=None):
         if param == 'description.xml':

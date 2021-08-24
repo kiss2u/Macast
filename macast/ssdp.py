@@ -24,6 +24,7 @@ SSDP_PORT = 1900
 SSDP_ADDR = '239.255.255.250'
 SERVER_ID = 'SSDP Server'
 logger = logging.getLogger("SSDPServer")
+logger.setLevel(logging.DEBUG)
 
 
 class SSDPServer:
